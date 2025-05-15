@@ -1,5 +1,7 @@
 package com.dev.productserviceapr21capstone.services;
 
+import com.dev.productserviceapr21capstone.dtos.ProductProjection;
+import com.dev.productserviceapr21capstone.dtos.ProductProjectionDto;
 import com.dev.productserviceapr21capstone.exceptions.ProductNotFoundException;
 import com.dev.productserviceapr21capstone.models.Category;
 import com.dev.productserviceapr21capstone.models.Product;
@@ -66,7 +68,7 @@ public class ProductDbService implements ProductService{
 
     private Category getCategoryFromDB(String categoryName) {
         Optional<Category> categoryOptional = categoryRepository.findByName(categoryName);
-        if(categoryOptional.isEmpty()){
+        if(categoryOptional.isPresent()){
             return categoryOptional.get();
         }
 
